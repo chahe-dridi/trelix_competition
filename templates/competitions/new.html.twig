@@ -1,0 +1,12 @@
+{% extends 'da.html.twig' %}
+
+{% block title %}New Competition{% endblock %}
+
+{% block body %}
+<div style="padding-bottom: 5%;"></div>
+    <h1>Create new Competition</h1>
+
+    {{ include('competitions/_form.html.twig') }}
+
+    <a class="btn btn-sm btn-info"  href="{{ path('app_competitions_index') }}">back to list</a>
+{% endblock %}

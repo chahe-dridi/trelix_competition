@@ -1,0 +1,125 @@
+{% extends 'da.html.twig' %}
+
+{% block title %}Participation index{% endblock %}
+
+{% block body %}
+
+<style>
+    /* Pagination styling */
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        font-size: 14px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination a, .pagination span {
+        margin: 0 5px;
+        padding: 8px 12px;
+        border: 1px solid #3498db;
+        border-radius: 20px; /* Rounded border */
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        color: #3498db; /* Text color for pagination links */
+        background-color: #f7f7f7; /* Background color for pagination links */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+    }
+
+    .pagination a:hover {
+        background-color: #2980b9;
+        color: #fff; /* Text color on hover */
+    }
+
+    .pagination .current {
+        background-color: #2c3e50;
+        color: #fff;
+    }
+
+    .pagination .next, .pagination .last,
+    .pagination .previous, .pagination .first {
+        font-weight: bold;
+    }
+
+    .pagination a[rel="prev"], .pagination a[rel="next"] {
+        text-decoration: none;
+    }
+
+    /* Styling for search form */
+    #searchForm {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div style="padding-bottom: 5%;"></div>
+
+<h1>Participation index</h1>
+<div class="row">
+
+    <div class="col-lg-6">
+        <!-- Buttons for actions -->
+        <div class="button-group">
+
+<a class="btn btn-sm btn-info" href="{{ path('app_participations_new') }}">Create new</a>
+</div>
+</div>
+
+<div class="col-lg-6">
+        <form id="searchForm" class="form-inline mb-3">
+            <input type="text" id="participationIdSearch" class="form-control mr-2" placeholder="Search by ID">
+        </form>
+    </div>
+</div>
+<!-- Table displaying participations -->
+<table class="table">
+    <!-- Table header -->
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Urlsolution</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+        {% for participation in participations %}
+            <tr>
+                <!-- Participation details -->
+                <td>{{ participation.id }}</td>
+                <td>{{ participation.urlsolution }}</td>
+                <td>
+                    <!-- Action buttons -->
+                    <a class="btn btn-sm btn-primary" href="{{ path('app_participations_show', {'id': participation.id}) }}">Show</a>
+                    <a class="btn btn-sm btn-info" href="{{ path('app_participations_edit', {'id': participation.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <!-- If no participations found -->
+            <tr>
+                <td colspan="3">No records found</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<div>{{ knp_pagination_render(participations) }}</div>
+
+<!-- JavaScript for filtering by ID -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Filter table based on participation ID
+        $("#participationIdSearch").on("keyup", function() {
+            var searchQuery = $(this).val().trim();
+            $(".table tbody tr").each(function() {
+                var participationId = $(this).find("td:eq(0)").text().trim(); // Get ID from the first column
+                $(this).toggle(participationId.startsWith(searchQuery)); // Show or hide rows based on ID match
+            });
+        });
+    });
+</script>
+    
+{% endblock %}

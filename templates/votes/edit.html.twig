@@ -1,0 +1,66 @@
+{% extends 'da.html.twig' %}
+
+{% block title %}Edit Vote{% endblock %}
+
+{% block body %}
+<div style="padding-bottom: 5%;"></div>
+    <h1>Edit Vote</h1>
+
+    {{ form_start(form)}}
+    {{ form_row(form.note, {'attr': {'style': 'display: none;'}}) }} <!-- Make the note field hidden -->
+    
+    <div class="star-rating" data-value="{{ vote.note }}">
+        {% for i in 1..5 %}
+            {% if i <= vote.note %}
+                <span class="star active" data-value="{{ i }}">&#9733;</span>
+            {% else %}
+                <span class="star" data-value="{{ i }}">&#9733;</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Vote</button>
+    {{ form_end(form) }}
+    <a class="btn btn-sm btn-info" href="{{ path('app_votes_index') }}">back to list</a>
+
+    {{ include('votes/_delete_form.html.twig') }}
+
+    <style>
+        .star-rating {
+            font-size: 36px;
+        }
+
+        .star {
+            color: #ddd;
+            cursor: pointer;
+        }
+
+        .star.active {
+            color: #ff0; /* Change color of active stars */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.star');
+            const noteInput = document.getElementById('{{ form.note.vars.id }}'); // Update to match the ID of your note field
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    noteInput.value = value; // Update the value of the note field
+        
+                    // Remove 'active' class from all stars
+                    stars.forEach(s => {
+                        s.classList.remove('active');
+                    });
+        
+                    // Add 'active' class to clicked star and previous stars
+                    for (let i = 0; i < value; i++) {
+                        stars[i].classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

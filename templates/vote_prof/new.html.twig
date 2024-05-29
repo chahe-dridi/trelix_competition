@@ -1,0 +1,64 @@
+{% extends 'user.html.twig' %}
+
+{% block title %}New Vote{% endblock %}
+
+{% block body %}
+    <style>
+        .star-rating {
+            font-size: 36px;
+        }
+
+        .star {
+            color: #ddd;
+            cursor: pointer;
+        }
+
+        .star.active {
+            color: #ff0; /* Change color of active stars */
+        }
+        
+    </style>
+
+    <h1>Add New Vote</h1>
+
+    {{ form_start(form)}}
+    {{ form_row(form.note, {'attr': {'style': 'display: none;'}}) }} <!-- Make the note field hidden -->
+    
+    
+    <div class="star-rating">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Vote</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_vote_prof_index') }}">Back to Participations</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.star');
+            const noteInput = document.getElementById('{{ form.note.vars.id }}'); // Update to match the ID of your note field
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    noteInput.value = value; // Update the value of the note field
+        
+                    // Remove 'active' class from all stars
+                    stars.forEach(s => {
+                        s.classList.remove('active');
+                    });
+        
+                    // Add 'active' class to clicked star and previous stars
+                    for (let i = 0; i < value; i++) {
+                        stars[i].classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

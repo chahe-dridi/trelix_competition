@@ -1,0 +1,10 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+  
+    {{ form_row(form.urlsolution) }}
+    {{ form_row(form.idcompetition, { 'attr': {'style': 'display: none;'} }) }}
+    {{ form_row(form.iduser) }}
+   
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}

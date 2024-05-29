@@ -1,0 +1,52 @@
+{% extends 'da.html.twig' %}
+
+{% block title %}Competition Statistics{% endblock %}
+
+{% block body %}
+<div class="container mt-6">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-18 mb-10">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Competition Statistics</h3>
+        </div>
+        <div class="card-body">
+          <canvas id="myChartCompetition" style="height: 300px; width: 100%; margin-bottom: 20px;"></canvas>
+        </div>
+      </div>
+      <a href="{{ path('app_competitions_index') }}" class="btn btn-primary mt-4">Back to List</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var ctxCompetition = document.getElementById('myChartCompetition').getContext('2d');
+  var myChartCompetition = new Chart(ctxCompetition, {
+    type: 'bar',
+    data: {
+      labels: [{% for competition, count in statistics['Competitions by Participant Count'] %}
+                 '{{ competition }}',
+               {% endfor %}],
+      datasets: [{
+        label: 'Number of Participants',
+        data: [{% for competition, count in statistics['Competitions by Participant Count'] %}{{ count }},{% endfor %}],
+        backgroundColor: 'rgba(148, 87, 235, 0.8)',  // Violet
+        borderColor: 'rgba(148, 87, 235, 1)',       // Violet
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+</script>
+{% endblock %}

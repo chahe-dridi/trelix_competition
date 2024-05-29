@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>EduMall - LMS & e-Learning Platform Template</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+
+    
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.png') }}">
+    {% block css %}
+        <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
+
+                <!-- Font CSS -->
+                <link rel="preconnect" href="{{asset('https://fonts.googleapis.com/ ') }}">
+                <link rel="preconnect" href="{{ asset('https://fonts.gstatic.com/') }}" crossorigin>
+                <link href="{{ asset('"assets/css/vendor/family=Montserrat.css') }}" rel="stylesheet">
+
+                <!-- Vendor CSS (Bootstrap & Icon Font) -->
+                <link rel="stylesheet" href="{{ asset('assets/css/vendor/fontawesome-all.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/vendor/edumall-icon.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+
+                <!-- Plugins CSS (All Plugins Files) -->
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/aos.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper-bundle.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/perfect-scrollbar.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery.powertip.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/glightbox.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/flatpickr.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/ion.rangeSlider.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/css/plugins/select2.min.css') }}">
+                
+
+                <!-- Style CSS -->
+                <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+ {% endblock  %}
+</head>
+
+<body class="dashboard-page dashboard-nav-fixed">
+
+    <!-- Dashboard Nav Start -->
+    <div class="dashboard-nav offcanvas offcanvas-start" id="offcanvasDashboard">
+
+        <!-- Dashboard Nav Wrapper Start -->
+        <div class="dashboard-nav__wrapper">
+            <!-- Dashboard Nav Header Start -->
+            <div class="offcanvas-header dashboard-nav__header dashboard-nav-header">
+
+                <div class="dashboard-nav__toggle d-xl-none">
+                    <button class="toggle-close" data-bs-dismiss="offcanvas"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="dashboard-nav__logo">
+                   <a class="logo" href="index.html"><img src="{{ asset('assets/images/dark-logo.png') }}" alt="Logo" width="148" height="62"></a> 
+                </div>
+
+            </div>
+            <!-- Dashboard Nav Header End -->
+
+            <!-- Dashboard Nav Content Start -->
+            <div class="offcanvas-body dashboard-nav__content navScroll">
+
+                <!-- Dashboard Nav Menu Start -->
+                <div class="dashboard-nav__menu">
+                    <ul class="dashboard-nav__menu-list">
+                        <li>
+                            <a href="dashboard-index.html">
+                                <i class="edumi edumi-layers"></i>
+                                <span class="text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-profile.html">
+                                <i class="edumi edumi-follower"></i>
+                                <span class="text">My Profile</span>
+                            </a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                    <ul class="dashboard-nav__menu-list">
+                        <li>
+                            <span class="dashboard-nav__title">Instructor</span>
+                        </li>
+                        <li>
+                            <a class="icon-link" href="{{ path('app_competitions_index') }}" >
+                                <i class="edumi edumi-youtuber"></i>
+                            competitions  </a>
+                        </li>
+                     
+                                    <li>
+                        <a class="icon-link" href="{{ path('app_votes_index') }}">
+                            <i class="edumi edumi-star"></i>
+                            Votes
+                        </a>
+                    </li>
+                     <li>
+                            <a class="icon-link" href="{{ path('app_participations_index') }}" >
+                         
+                       <i class="edumi edumi-checklist"></i>
+                           participations   </a>
+                        </li>      
+ 
+                    </ul>
+                </div>
+                <!-- Dashboard Nav Menu End -->
+
+            </div>
+            <!-- Dashboard Nav Content End -->
+
+            <div class="offcanvas-footer"></div>
+        </div>
+        <!-- Dashboard Nav Wrapper End -->
+
+    </div>
+    <!-- Dashboard Nav End -->
+
+    <!-- Dashboard Menu Start -->
+    <div class="dashboard-menu">
+
+        <!-- Dashboard Menu Close Start -->
+        <div class="dashboard-menu__close">
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <!-- Dashboard Menu Close End -->
+ 
+        <!-- Dashboard Menu Content Start -->
+        <div class="dashboard-menu__content">
+            <div class="dashboard-menu__image">
+                <img src="{{ asset('assets/images/canvas-menu-image.png') }}" alt="Images" width="984" height="692">
+            </div>
+            <div class="dashboard-menu__main-menu">
+                <ul class="dashboard-menu__menu-link">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="dashboard-menu__search">
+                    <form action="#">
+                        <input type="text" placeholder="Search…">
+                        <button class="search-btn"><i class="far fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Dashboard Menu Content End -->
+
+
+
+
+
+
+
+    </div>
+    <!-- Dashboard Menu End -->
+
+
+    <!-- Dashboard Main Wrapper Start -->
+    <main class="dashboard-main-wrapper">
+
+        <!-- Dashboard Header Start -->
+        <div class="dashboard-header">
+            <div class="container">
+                <!-- Dashboard Header Wrapper Start -->
+                <div class="dashboard-header__wrap">
+
+       
+
+                </div>
+                <!-- Dashboard Header Wrapper End -->
+            </div>
+        </div>
+        <!-- Dashboard Header End -->
+
+
+
+<!--  a ----------------------------------------------------------------------------a -->
+
+        <!-- Dashboard Content Start -->
+        <div class="dashboard-content">
+
+            
+
+ {% block body   %}
+
+
+{% endblock  %}
+
+
+        </div>
+        <!-- Dashboard Content End -->
+
+
+    </main>
+    <!-- Dashboard Main Wrapper End -->
+
+    <!-- Edumall Demo Option Start -->
+    <div class="edumall-demo-option">
+
+        
+
+        <div class="edumall-demo-option__panel">
+
+            <div class="edumall-demo-option__header">
+                <h5 class="edumall-demo-option__title">EduMall - Professional LMS Education Center HTML Template</h5>
+                <a class="edumall-demo-option__btn btn btn-primary btn-hover-secondary" href="https://1.envato.market/qnL5nL"><i class="fas fa-shopping-basket"></i> Buy Now</a>
+            </div>
+
+            <div class="edumall-demo-option__body">
+                <!-- <div class="edumall-demo-option-item">
+                <a href="" data-bs-tooltip="tooltip" data-bs-placement="top" title="Landing Page">
+                    <img src="{{ asset('assets/images/demo/landing.jpg') }}" alt="">
+                </a>
+            </div> -->
+                <div class="edumall-demo-option-item">
+                    <a href="index.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Main Demo">
+                        <img src="{{ asset('assets/images/demo/home-01.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-course-hub.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Course Hub">
+                        <img src="{{ asset('assets/images/demo/home-02.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-online-academy.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Online Academy">
+                        <img src="{{ asset('assets/images/demo/home-03.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-education-center.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Education Center">
+                        <img src="{{ asset('assets/images/demo/home-04.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-university.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="University">
+                        <img src="{{ asset('assets/images/demo/home-05.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-language-academic.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Language Academic">
+                        <img src="{{ asset('assets/images/demo/home-06.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-single-instructor.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Single Instructor">
+                        <img src="{{ asset('assets/images/demo/home-07.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-dev.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Dev">
+                        <img src="{{ asset('assets/images/demo/home-08.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+                <div class="edumall-demo-option-item">
+                    <a href="index-online-art.html" data-bs-tooltip="tooltip" data-bs-placement="top" title="Online Art">
+                        <img src="{{ asset(' src="assets/images/demo/home-09.jpg') }}" alt="Home" width="130" height="158">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Edumall Demo Option End -->
+
+
+    {% block js %} 
+    <!-- JS Vendor, Plugins & Activation Script Files -->
+
+    <!-- Vendors JS -->
+    <script src="{{ asset('assets/js/vendor/modernizr-3.11.7.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Plugins JS -->
+    <script src="{{ asset('assets/js/plugins/aos.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/parallax.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.powertip.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/nice-select.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.sticky-kit.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/flatpickr.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/range-slider.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2.min.js') }}"></script>
+
+
+    <!-- Activation JS -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    {% endblock  %} 
+</body>
+
+
+ 
+
+</html>

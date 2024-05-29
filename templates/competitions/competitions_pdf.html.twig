@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Competitions Information</title>
+    <style>
+        /* Define your PDF styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #33f;
+            text-shadow: 1px 1px 1px #ccc;
+            font-size: 28px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+        th {
+            background-color: #f0f0f0;
+            color: #33f;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Competitions Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for competition in competitions %}
+                <tr>
+                    <td>{{ competition.id }}</td>
+                    <td>{{ competition.nom }}</td>
+                    <td>{{ competition.description }}</td>
+                    <td>{{ competition.datedebut ? competition.datedebut|date('Y-m-d') : '' }}</td>
+                    <td>{{ competition.datefin ? competition.datefin|date('Y-m-d') : '' }}</td>
+                    <td>
+                        {% if competition.image %}
+                            <img src="{{ asset('uploads/' ~ competition.image) }}" alt="{{ competition.nom }}" class="img-thumbnail" style="max-height: 50px;">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

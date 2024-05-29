@@ -1,0 +1,14 @@
+{% extends 'da.html.twig' %}
+
+{% block title %}Edit Participation{% endblock %}
+
+{% block body %}
+<div style="padding-bottom: 5%;"></div>
+    <h1>Edit Participation</h1>
+
+    {{ include('participations/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a  class="btn btn-sm btn-info" href="{{ path('app_participations_index') }}">back to list</a>
+
+    {{ include('participations/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,28 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <!-- Name field -->
+   
+     
+           
+            {{ form_row(form.nom) }}
+     
+  
+            {{ form_row(form.description) }}
+ 
+            {{ form_row(form.datedebut) }}
+
+
+            {{ form_row(form.datefin) }}
+
+            
+            {{ form_row(form.image) }}
+ 
+         
+
+    <!-- Submit button -->
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+
+{{ form_end(form) }}

@@ -1,0 +1,39 @@
+{% extends 'user.html.twig' %}
+
+{% block title %}Participation index{% endblock %}
+
+{% block body %}
+    <h1>Participation  </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+              
+                <th>Urlsolution</th>
+                <th>competition nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participation in participations %}
+            <tr>
+             
+                <td>{{ participation.urlsolution }}</td>
+                <td>{{ participation.idcompetition.nom }}</td>
+                <td>
+             
+                    <a href="{{ path('app_participation_etudiant_edit', {'id': participation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+ 
+    
+    <a href="{{ path('app_participation_etudiant_index') }}">back to list</a>
+{% endblock %}

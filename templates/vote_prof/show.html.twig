@@ -1,0 +1,77 @@
+{% extends 'user.html.twig' %}
+
+{% block title %}Vote index{% endblock %}
+
+{% block body %}
+    <h1>Vote</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Note</th>
+                <th>Competition</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vote in votes %}
+                <tr>
+                    <td>{{ vote.idparticipation.iduser.nom }}</td>
+                    <td>
+                        <div class="star-rating" data-value="{{ vote.note }}">
+                            {% for i in 1..5 %}
+                                {% if i <= vote.note %}
+                                    <span class="star active">&#9733;</span>
+                                {% else %}
+                                    <span class="star">&#9733;</span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td>{{ vote.idparticipation.idcompetition.nom }}</td>
+                    <td>
+                        <a href="{{ path('app_vote_prof_edit', {'id': vote.id}) }}">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vote_prof_index') }}">Back to list</a>
+
+    <style>
+        .star-rating {
+            font-size: 36px;
+        }
+
+        .star {
+            color: #ddd;
+        }
+
+        .star.active {
+            color: #ff0; /* Change color of active stars */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const starRatingElements = document.querySelectorAll('.star-rating');
+
+            starRatingElements.forEach(function(starRatingElement) {
+                const value = starRatingElement.dataset.value;
+                const stars = starRatingElement.querySelectorAll('.star');
+
+                stars.forEach(function(star, index) {
+                    if (index < value) {
+                        star.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
